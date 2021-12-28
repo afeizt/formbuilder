@@ -1,0 +1,21 @@
+{
+	"name": "mycm/formbuilder",
+	"description": "form build",
+	"keywords": ["form"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "mycm"
+		}
+	],
+	"type": "extension",
+	"require": {
+		"epii/template-engine": "^1.1",
+		"php": ">=7.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"mycm\\FormBuilder\\": "./src"
+		}
+	}
+}
