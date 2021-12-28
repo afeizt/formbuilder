@@ -1,4 +1,13 @@
 <?php
+/*
+ * @Author: mycm
+ * @Email: afeizt@163.com
+ * @QQ: 57725649
+ * @Date: 2021-12-28 11:55:09
+ * @LastEditors: mycm
+ * @LastEditTime: 2021-12-28 23:25:23
+ * @Description: file content
+ */
 
 namespace mycm\FormBuilder;
 
@@ -84,7 +93,7 @@ class Form
         return $html;
     }
 
-    public function parseTemplate($content = '', $data)
+    public function parseTemplate($content, $data)
     {
         $html = \epii\template\View::fetchContent($content, $data);
 
