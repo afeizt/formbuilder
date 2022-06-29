@@ -17,22 +17,26 @@ class FormComponents
     public function __construct()
     {
         $this->templateBase = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR;
-        // $this->config['tpl_begin'] = '{';
-        // $this->config['tpl_end'] = '}';
+    // $this->config['tpl_begin'] = '{';
+    // $this->config['tpl_end'] = '}';
     }
 
     public function getTemplatePath($template)
     {
-        if (empty($template)) {
+        if (empty($template))
+        {
             $this->template = $this->templateBase . 'input.php';
-        } else {
+        }
+        else
+        {
             $this->template = $this->templateBase . $template;
         }
     }
 
     public function getTemplateContent()
     {
-        if (empty($this->template)) {
+        if (empty($this->template))
+        {
             throw new \Exception('必须提供模板文件名');
         }
 
@@ -70,12 +74,18 @@ class FormComponents
 
     public function getDefaultValue()
     {
-        if (!empty($this->_defaultValue)) {
+        if (!empty($this->_defaultValue))
+        {
             return $this->_defaultValue;
-        } else {
-            if (in_array($this->getType(), ['radio', 'select', 'checkbox'])) {
+        }
+        else
+        {
+            if (in_array($this->getType(), ['radio', 'select', 'checkbox']))
+            {
                 return [];
-            } else {
+            }
+            else
+            {
                 return '';
             }
         }
@@ -83,12 +93,17 @@ class FormComponents
 
     public function setDefaultValue($val)
     {
-        if (!empty($val)) {
-            if (in_array($this->getType(), ['radio', 'select', 'checkbox'])) {
+        if (!empty($val))
+        {
+            if (in_array($this->getType(), ['radio', 'select', 'checkbox']))
+            {
                 $val = explode(',', $val);
             }
-        } else {
-            if (in_array($this->getType(), ['radio', 'select', 'checkbox'])) {
+        }
+        else
+        {
+            if (in_array($this->getType(), ['radio', 'select', 'checkbox']))
+            {
                 $val = [];
             }
         }
@@ -123,7 +138,8 @@ class FormComponents
     public function getData()
     {
         $data = [];
-        switch ($this->getType()) {
+        switch ($this->getType())
+        {
             case 'input':
                 $data = ['label' => $this->getLabel(), 'defaultValue' => $this->getDefaultValue(), 'type' => $this->getType(), 'name' => $this->geTFieldName(), 'class' => $this->getClassName(), 'placeholder' => $this->getPlaceholder(), 'tips' => $this->getTips()];
                 break;
@@ -152,7 +168,7 @@ class FormComponents
                 $data = ['label' => $this->getLabel(), 'defaultValue' => $this->getDefaultValue(), 'type' => $this->getType(), 'name' => $name, 'class' => $this->getClassName(), 'placeholder' => $this->getPlaceholder(), 'options' => $options, 'multiple' => $multiple, 'tips' => $this->getTips()];
                 break;
             case 'upload':
-                $uploadAllowExt = \method_exists($this, 'getUploadAllowExt') ? $this->getUploadAllowExt() : 'jpg|png';
+                $uploadAllowExt = \method_exists($this, 'getUploadAllowExt') ? $this->getUploadAllowExt() : 'jpg|png|gif|webp';
                 $use_thumb = \method_exists($this, 'getUseThumb') ? $this->getUseThumb() : false;
                 $thumb_value = \method_exists($this, 'getThumbValue') ? $this->getThumbValue() : '';
                 $add_watermark = \method_exists($this, 'getAddWaterMark') ? $this->getAddWaterMark() : false;
@@ -160,10 +176,10 @@ class FormComponents
                 $data = ['label' => $this->getLabel(), 'defaultValue' => $this->getDefaultValue(), 'type' => $this->getType(), 'name' => $this->geTFieldName(), 'class' => $this->getClassName(), 'placeholder' => $this->getPlaceholder(), 'multiple' => $multiple, 'uploadAllowExt' => $uploadAllowExt, 'use_thumb' => $use_thumb, 'add_watermark' => $add_watermark, 'thumb_value' => $thumb_value, 'tips' => $this->getTips()];
                 break;
             case 'articleSelect':
-            
+
                 $articles = \method_exists($this, 'getArticlesValue') ? $this->getArticlesValue() : false;
                 $multiple = \method_exists($this, 'getMultiple') ? $this->getMultiple() : false;
-                $data = ['label' => $this->getLabel(), 'defaultValue' => $this->getDefaultValue(), 'type' => $this->getType(), 'name' => $this->geTFieldName(), 'class' => $this->getClassName(), 'placeholder' => $this->getPlaceholder(), 'multiple' => $multiple,  'articles' => $articles, 'tips' => $this->getTips()];
+                $data = ['label' => $this->getLabel(), 'defaultValue' => $this->getDefaultValue(), 'type' => $this->getType(), 'name' => $this->geTFieldName(), 'class' => $this->getClassName(), 'placeholder' => $this->getPlaceholder(), 'multiple' => $multiple, 'articles' => $articles, 'tips' => $this->getTips()];
                 break;
             default:
                 $data = ['label' => $this->getLabel(), 'defaultValue' => $this->getDefaultValue(), 'type' => $this->getType(), 'name' => $this->geTFieldName(), 'class' => $this->getClassName(), 'placeholder' => $this->getPlaceholder(), 'tips' => $this->getTips()];
