@@ -18,7 +18,7 @@ class Textarea extends FormComponents
         parent::__construct();
         $this->getTemplatePath($template);
         $this->_type = 'textarea';
-        $this->_classNme = 'layui-textarea';
+        $this->_className = 'layui-textarea';
         $this->_rows = '3';
     }
 

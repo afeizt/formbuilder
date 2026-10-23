@@ -14,6 +14,7 @@ namespace mycm\FormBuilder;
 class Form
 {
     protected $components = [];
+    protected $options = [];
     protected $templateEngineConfig = ['tpl_dir' => __DIR__ . '/template', 'cache_dir' => __DIR__ . '/cache']; //模板引擎配置
 
     public function __construct($options = [])
